@@ -2,6 +2,8 @@
 
 DistrictInsight is a school district evaluation platform built for the AI Schools Workshop challenge. It helps parents and educators compare public school districts in the United States using publicly available data and easy-to-understand scoring.
 
+The application lives in [`district-insight/`](./district-insight/).
+
 ## What This Project Is About
 
 Choosing a school district is hard because data is scattered, technical, and often hard to compare. DistrictInsight brings key signals into one place and turns complex district metrics into clear insights.
@@ -25,23 +27,20 @@ Choosing a school district is hard because data is scattered, technical, and oft
 
 ## How DistrictInsight Evaluates Districts
 
-DistrictInsight combines multiple district-level indicators into understandable category scores and an overall grade-style summary.
+DistrictInsight combines multiple district-level indicators into understandable category scores and an overall grade-style summary (A–F).
 
-### Example Evaluation Dimensions
+### Evaluation dimensions
 
-- Academic outcomes (proficiency and growth trends)
-- Funding and spending priorities
-- Student demographics and diversity profile
-- Teacher-focused signals (salary and student-teacher ratio)
-- Stability and enrollment trends over time
+- **Academics (40%)** — proficiency and assessment signals
+- **Funding (25%)** — per-pupil spending and revenue mix
+- **Environment (20%)** — enrollment scale and student–teacher ratio
+- **Equity (15%)** — context such as poverty and outcome spread where data allows
 
-## Data Source
+## Data source
 
-The platform uses the Urban Institute Education Data Portal (no API key required).
+The app uses the [Urban Institute Education Data Portal](https://educationdata.urban.org/api/) (no API key required).
 
-Base API:
-
-- https://educationdata.urban.org/api/
+Base API: `https://educationdata.urban.org/api/`
 
 Useful endpoint patterns:
 
@@ -50,57 +49,67 @@ Useful endpoint patterns:
 - Finance: `v1/school-districts/ccd/finance/{year}/`
 - Test scores: `v1/school-districts/edfacts/assessments/{year}/`
 
-## Proposed Tech Stack
+## Tech stack
 
-- Frontend: React 18 + TypeScript + Vite
-- Styling: Tailwind CSS
-- Routing: React Router 6
-- Charts: Recharts
-- Testing: Vitest + React Testing Library + user-event
-- Deployment: Vercel
+- **Frontend:** React + TypeScript + Vite
+- **Styling:** Tailwind CSS
+- **Routing:** React Router
+- **Charts:** Recharts
+- **Testing:** Vitest, React Testing Library, `@testing-library/user-event`, coverage via `@vitest/coverage-v8`
+- **Deployment:** [Vercel](https://vercel.com/) (static build; `vercel.json` rewrites client routes to `index.html`)
 
-## Workshop Goals
+## Workshop goals
 
-This project is designed to satisfy the workshop requirements in [instructions.md](./instructions.md):
+This project satisfies the requirements in [instructions.md](./instructions.md):
 
-- Build a runnable software product in one class session
-- Use generative AI heavily during ideation, implementation, and testing
-- Achieve thorough unit testing with a 100% code coverage target
-- Deploy a usable product for end users by end of session
+- Runnable software product
+- Heavy use of generative AI in ideation, implementation, and testing
+- Strong automated testing with coverage thresholds enforced in Vitest
+- Deployable product for end users on Vercel
 
-## Current Status
+## Local development
 
-This repository currently includes workshop planning and project framing. Implementation tasks should focus on:
+From the app directory:
 
-- Defining the district scoring model
-- Building district search and comparison views
-- Integrating Urban Institute endpoints
-- Implementing chart-based insights and trend views
-- Adding complete automated tests
-- Deploying the final application
+```bash
+cd district-insight
+npm install
+npm run dev
+```
 
-## Project Structure
+Open the URL Vite prints (typically `http://localhost:5173`).
 
-- [README.md](./README.md): Project overview and setup context
-- [instructions.md](./instructions.md): Workshop challenge requirements
-- [LICENSE.md](./LICENSE.md): License information
+### Other commands
+
+| Command | Purpose |
+|--------|--------|
+| `npm run build` | Typecheck and production build to `district-insight/dist` |
+| `npm run preview` | Serve the production build locally |
+| `npm test` | Run the Vitest suite once |
+| `npm run test:watch` | Vitest in watch mode |
+| `npm run test:coverage` | Tests with coverage report |
+| `npm run lint` | ESLint |
+
+## Deploy to Vercel
+
+1. Log in (one time): `npx vercel login`
+2. From `district-insight`: `npx vercel --prod --yes`
+
+The CLI will detect Vite, use `dist` as output, and apply SPA rewrites from [`district-insight/vercel.json`](./district-insight/vercel.json). You can also connect this Git repository in the Vercel dashboard and set the **Root Directory** to `district-insight`.
+
+## Repository layout
+
+| Path | Contents |
+|------|----------|
+| [README.md](./README.md) | This overview |
+| [instructions.md](./instructions.md) | Workshop challenge requirements |
+| [LICENSE.md](./LICENSE.md) | License |
+| [district-insight/](./district-insight/) | Application source, tests, and Vercel config |
 
 ## Team
 
-- Antonio Jackson[https://github.com/antoniojacksnn]
-- Angelina Wu[https://github.com/TangelinaWu]
-- Chinwe Otti[https://github.com/chinweot]
-- Liam Stewart[https://github.com/lcs493atnyu]
-- Lily Luo [https://github.com/lilyluo7412]
-
-## Run Instructions
-npm run dev
-
-
-## Next Steps
-
-1. Scaffold the React + TypeScript + Vite app
-2. Add API service layer for district data
-3. Build comparison and scoring UI
-4. Add full unit and component test coverage
-5. Deploy to Vercel and validate production behavior
+- [Antonio Jackson](https://github.com/antoniojacksnn)
+- [Angelina Wu](https://github.com/TangelinaWu)
+- [Chinwe Otti](https://github.com/chinweot)
+- [Liam Stewart](https://github.com/lcs493atnyu)
+- [Lily Luo](https://github.com/lilyluo7412)
