@@ -1,4 +1,4 @@
-# DistrictInsight
+# District Insight
 
 DistrictInsight is a school district evaluation platform built for the AI Schools Workshop challenge. It helps parents and educators compare public school districts in the United States using publicly available data and easy-to-understand scoring.
 
@@ -84,6 +84,18 @@ This repository currently includes workshop planning and project framing. Implem
 - [README.md](./README.md): Project overview and setup context
 - [instructions.md](./instructions.md): Workshop challenge requirements
 - [LICENSE.md](./LICENSE.md): License information
+
+## Team
+
+- Antonio Jackson
+- Angelina Wu
+- Chinwe Otti
+- Liam Stewart
+- Lily Luo
+
+## Run Instructions
+npm run dev
+ 
 
 ## Next Steps
 
