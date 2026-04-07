@@ -87,15 +87,15 @@ This repository currently includes workshop planning and project framing. Implem
 
 ## Team
 
-- Antonio Jackson
-- Angelina Wu
-- Chinwe Otti
-- Liam Stewart
-- Lily Luo
+- Antonio Jackson[https://github.com/antoniojacksnn]
+- Angelina Wu[https://github.com/TangelinaWu]
+- Chinwe Otti[https://github.com/chinweot]
+- Liam Stewart[https://github.com/lcs493atnyu]
+- Lily Luo [https://github.com/lilyluo7412]
 
 ## Run Instructions
 npm run dev
- 
+
 
 ## Next Steps
 
